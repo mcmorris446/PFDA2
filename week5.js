@@ -1,16 +1,16 @@
 /*
     Paste the code for your week 5 exercise below.
 */
+let rad = 60; // Width of the shape
+let xpos, ypos; // Starting position of shape
 
-// Declare global variables outside of functions, usually at the top of your code
-// see: https://www.w3schools.com/js/js_scope.asp
-var shoppingList = ["eggs", "milk", "sugar"];
-var hw, hh;
+let xspeed = 2.8; // Speed of the shape
+let yspeed = 4.2; // Speed of the shape
+
+let xdirection = 1; // Left or Right
+let ydirection = 1; // Top to Bottom
 
 function setup() {
-
-  // createCanvas(400, 400);
-
   if( windowWidth > windowHeight ){
     createCanvas(windowHeight, windowHeight);
   }else{
@@ -19,66 +19,45 @@ function setup() {
 
   hw = width/2;
   hh = height/2;
-
-  // draw rectangles placing the center at the coordinate rather than the top left corner
-  rectMode(CENTER);
-
-  // use degrees instead of radians for rotation
-  angleMode(DEGREES);
-
-  // We'll need the loop to animate our shape, so make sure noLoop() isn't called
-  // noLoop();
-
-  // for(i=0; i<width; i++){
-  //   myArray[i] = i;
-  // }
-  // console.log(myArray);
-
-  // noStroke();
-  // noFill();
+  noStroke();
+  frameRate(30);
+  ellipseMode(RADIUS);
+  // Set the starting position of the shape
+  xpos = width / 2;
+  ypos = height / 2;
 }
-  
+
 function draw() {
-  background(255, frameCount%10);
-
-  let strokeW = abs( sin(frameCount) * 20 );
-  let fillC = abs( (cos(frameCount)-0.5) * 255 );
-
-  strokeWeight(1);
-  fill(0);
-  textSize(32);
-  for(i = 0; i < shoppingList.length; i++){
-    text( shoppingList[i], 0,hh+(32 * i));
-  }
+  background(255);
   
 
-  strokeWeight(strokeW);
-  fill(fillC);
+  // Update the position of the shape
+  xpos = xpos + xspeed * xdirection;
+  ypos = ypos + yspeed * ydirection;
 
-  // rect(frameCount % width, hh, 50, 50);
-
-  translate(hw, hh);
-  rotate(frameCount % 360);
-  rect(0, 0, frameCount % height, frameCount % height);
-  resetMatrix();
-
-  rect(frameCount%width, 5, 10, 10);
-  rect(frameCount%width, height-5, 10, 10);
-}
-
-
-function plotCircle(numPoints, rad){
-  let x, y, ang;
-  let points = [];
-  let inc = 360 / numPoints;
-  
-  for(i=0; i<numPoints; i++){
-    ang = i * inc;
-    x = sin( radians(ang) ) * rad;
-    y = cos( radians(ang) ) * rad;
-    points[i] = {'x':x, 'y':y};
+  // Test to see if the shape exceeds the boundaries of the screen
+  // If it does, reverse its direction by multiplying by -1
+  if (xpos > width - rad || xpos < rad) {
+    xdirection *= -1;
+  }
+  if (ypos > height - rad || ypos < rad) {
+    ydirection *= -1;
   }
 
-  // return an array/object of coordinates
-  return points;
+  // Draw the shape
+  
+  ellipseMode(RADIUS);
+  ellipse(xpos, ypos, rad, rad);
+fill(255);
+  ellipseMode(RADIUS);
+  ellipse(xpos, ypos, rad-25, rad-25);
+   fill(247,18,18);
+   ellipseMode(CENTER);
+  ellipse(xpos, ypos, rad-30, rad-30);
+   fill(247,18,18);
+  
+textSize(40);
+  text('Target', xpos-55, ypos+90,);
+  
 }
+  
