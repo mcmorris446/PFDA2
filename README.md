@@ -1,18 +1,26 @@
 # Assignment Notes 
-This is your first assignment (after the Logo quiz).  The files in this github repository ("repo") are the ones you'll want to use as a template for your assignment.
+To begin with it was nice to return to using visual studio code and github again after not using them for quite some time, I had forgotten many of the basics although they quickly returned.
 
-## Using the files
-To use these, simply clone this repository onto your computer, or go to the GitHub website, click the green `Code` button and download the zip file.
+In a brief summary I would confidently say that using this coding language ( js ) is certainly much harder than any of basic the html or css coding i have had experiance with, in saying that though I noticed much of the logic is still the same which is something that made this mad rush a bit less stressful.
 
-Once you have downloaded all the file you can open the week4.html, week5.html and week6.html files and paste your exercise code in the bits indicated.
+In terms of week 4 as mentioned in the html file there were some issues with inserting a background image and using loadfont which as mentioned in the classes and in the html doc is a bit unriliable and showed an error code stating that it was in binary and couldnt be read. 
 
-Don't forget to edit this README.md file as specified in the assignment notes.
+(font was downloaded from google font and inserted into the assests folder so im not sure if I just should'nt have used google fonts)
 
-To submit, simply zip your assignment1 folder and submit the zipfile.  Instructions on creating a zip file on Mac and PC is available on the unit web site.
+For refrence I did put the image into the assests folder and rename it and then call it in using the following code which from what my limited experiance with the other languages should have worked. 
 
-## Cloning the Repo from a Terminal
+```let img;
+function preload() {
+  img = loadImage('assets/laDefense.jpg');
+}
+function setup() {
+  image(img, windowWidth, windowHeight);
+}
+```
 
-From a terminal: 
+For weeks 5 and 6 coding I had some fun with resuing the target company logo and adding some twists to it - such as making it a actual target. If i had been bale to allocate myself more time to do these two tasks I would have like to make a face with eyes which follow the mouse x and y movements and perhaps a silly spinning nose on a mouse click input. overall though another fun project and look forward to the next one.
 
-`git clone https://github.com/jacksonpost/p4d assignment-2`
+
+
+
 
